@@ -35,65 +35,56 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        GetData().execute(urlGetData)
         categoryList = ArrayList()
         listCategoryRecyclerView.layoutManager = LinearLayoutManager(this, RecyclerView.HORIZONTAL, false)
-        categoryList.add(CategoryProductModel(1,"Mon an Han Quoc", true))
-        categoryList.add(CategoryProductModel(2,"Mon an Viet Nam", true))
-        println(categoryList)
-        adapter = CategoryProductAdapter(this, categoryList)
+        adapter = CategoryProductAdapter(this@MainActivity, categoryList)
         listCategoryRecyclerView.adapter = adapter
-        GetData().execute(urlGetData)
+
     }
     inner class GetData() : AsyncTask<String,Void,String>(){
         override fun doInBackground(vararg params: String?): String {
             return  getContentURl(params[0])
-
         }
         override fun onPostExecute(result:String?){
             super.onPostExecute(result)
             var jsonArray: JSONArray = JSONArray(result)
-
-            var name:String = ""
-            var id:Int
-            var show:Boolean
+            var name_category_product:String = ""
+            var id:String
+            var show: String
 
             for(category in 0..jsonArray.length()-1){
 
                 var objectCategory:JSONObject = jsonArray.getJSONObject(category)
-                id = objectCategory.getInt("id_category_product")
-                name = objectCategory.getString("name_category_product")
-                show = objectCategory.getBoolean("show")
-                categoryList.add(CategoryProductModel(id, name, show))
-
-                listCategoryRecyclerView.adapter = adapter
-
+                id = objectCategory.getString("id_category_product")
+                name_category_product = objectCategory.getString("name_category_product")
+                show = objectCategory.getString("show")
+                categoryList.add(CategoryProductModel(id.toInt(), name_category_product, show.toBoolean()))
             }
-
             Toast.makeText(applicationContext,result,Toast.LENGTH_LONG).show()
         }
 
     }
-    private fun getContentURl(url : String?) : String{
+    private fun getContentURl(url : String?) : String {
         var content: StringBuilder = StringBuilder()
         val url: URL = URL(url)
         val urlConnection: HttpURLConnection = url.openConnection() as HttpURLConnection
         val inputStreamReader: InputStreamReader = InputStreamReader(urlConnection.inputStream)
         val bufferedReader: BufferedReader = BufferedReader(inputStreamReader)
-
         var line: String = ""
-        try{
-            do{
+        try {
+            do {
                 line = bufferedReader.readLine()
-                if(line != null){
+                if (line != null) {
                     content.append(line)
                 }
-            }while (line!=null)
+            } while (line != null)
             bufferedReader.close()
-        }catch (e: Exception){
-            Log.d("AAA",e.toString())
+        } catch (e: Exception) {
+            Log.d("AAA", e.toString())
         }
         return content.toString()
     }
-
 
 }
