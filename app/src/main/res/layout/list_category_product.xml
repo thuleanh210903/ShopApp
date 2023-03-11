@@ -6,6 +6,7 @@
     android:layout_height="wrap_content">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/productByCate"
         android:layout_width="89dp"
         android:layout_height="113dp"
         android:background="@drawable/custom_input"

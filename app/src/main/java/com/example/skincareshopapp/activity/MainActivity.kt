@@ -42,6 +42,7 @@ class MainActivity : AppCompatActivity() {
         adapter = CategoryProductAdapter(this@MainActivity, categoryList)
         listCategoryRecyclerView.adapter = adapter
 
+
     }
     inner class GetData() : AsyncTask<String,Void,String>(){
         override fun doInBackground(vararg params: String?): String {

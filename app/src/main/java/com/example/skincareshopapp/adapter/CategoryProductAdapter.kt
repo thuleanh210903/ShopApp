@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.constraintlayout.widget.ConstraintSet
 import androidx.recyclerview.widget.RecyclerView
 import com.example.skincareshopapp.R
 import com.example.skincareshopapp.model.CategoryProductModel
@@ -20,6 +22,9 @@ class CategoryProductAdapter(private val context: Context, private val listCateg
     override fun onBindViewHolder(holder: CategoryProductAdapter.ViewHolder, position: Int) {
         val category = listCategory[position]
         holder.nameCategory.text = category.name_category_product
+        holder.productByCate.setOnClickListener{
+                holder.productByCate.id
+        }
     }
 
     override fun getItemCount(): Int {
@@ -28,6 +33,7 @@ class CategoryProductAdapter(private val context: Context, private val listCateg
 
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         val nameCategory: TextView = itemView.findViewById(R.id.nameCategory)
+        val productByCate: ConstraintLayout = itemView.findViewById(R.id.productByCate)
     }
 
 }
