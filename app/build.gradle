@@ -51,6 +51,13 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
+    //slide auto
+
+    //image view
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
+
+
     implementation('com.squareup.retrofit2:retrofit:2.3.0')
             {
                 exclude module: 'okhttp'
@@ -61,4 +68,6 @@ dependencies {
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
     implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
     implementation 'com.squareup.okhttp3:logging-interceptor:3.9.1'
+
+    implementation 'com.google.code.gson:gson:2.8.9'
 }

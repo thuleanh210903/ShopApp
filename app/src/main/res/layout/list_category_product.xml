@@ -9,21 +9,31 @@
         android:id="@+id/productByCate"
         android:layout_width="89dp"
         android:layout_height="86dp"
-        android:background="@drawable/custom_input"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="0dp">
 
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_image"
+            android:layout_width="96dp"
+            android:layout_height="60dp"
+            app:civ_border_color="#FF000000"
+            tools:layout_editor_absoluteX="-4dp"
+            tools:layout_editor_absoluteY="4dp" />
 
         <TextView
             android:id="@+id/nameCategory"
-            android:layout_width="65dp"
-            android:layout_height="31dp"
+            android:layout_width="61dp"
+            android:layout_height="22dp"
             android:text="TextView"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.571"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.509" />
+            app:layout_constraintVertical_bias="1.0" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

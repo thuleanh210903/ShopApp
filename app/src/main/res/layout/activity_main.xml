@@ -26,23 +26,47 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="wrap_content">
 
-                    <ViewFlipper
-                        android:id="@+id/viewFlipper"
-                        android:layout_width="match_parent"
-                        android:layout_height="200dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.0"
-                        tools:ignore="MissingConstraints"
-                        tools:layout_editor_absoluteX="-38dp" />
+
+                    <!--                    <ViewFlipper-->
+<!--                        android:id="@+id/bannerFlipper"-->
+<!--                        android:layout_width="379dp"-->
+<!--                        android:layout_height="155dp"-->
+<!--                        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                        app:layout_constraintEnd_toEndOf="parent"-->
+<!--                        app:layout_constraintStart_toStartOf="parent"-->
+<!--                        app:layout_constraintTop_toTopOf="parent"-->
+<!--                        app:layout_constraintVertical_bias="0.027"-->
+<!--                        tools:ignore="MissingConstraints" />-->
+
+                    <!--                    <com.google.android.material.bottomnavigation.BottomNavigationView-->
+<!--                        android:id="@+id/bottomNavigationView"-->
+<!--                        android:layout_width="389dp"-->
+<!--                        android:layout_height="53dp"-->
+<!--                        android:background="@drawable/round_corner"-->
+<!--                        app:itemIconSize="30dp"-->
+<!--                        app:labelVisibilityMode="labeled"-->
+<!--                        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                        app:layout_constraintEnd_toEndOf="parent"-->
+<!--                        app:layout_constraintHorizontal_bias="0.0"-->
+<!--                        app:layout_constraintStart_toStartOf="parent"-->
+<!--                        app:layout_constraintTop_toBottomOf="@+id/textView"-->
+<!--                        app:layout_constraintVertical_bias="1.0"-->
+<!--                        app:menu="@menu/item_menu">-->
+
+<!--                        <TextView-->
+<!--                            android:id="@+id/textView"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="TextView" />-->
+<!--                    </com.google.android.material.bottomnavigation.BottomNavigationView>-->
 
                     <EditText
                         android:id="@+id/searchBar"
                         android:layout_width="328dp"
                         android:layout_height="54dp"
-                        android:layout_marginTop="16dp"
+                        android:layout_marginTop="32dp"
                         android:background="@drawable/custom_input"
                         android:drawableStart="@drawable/ic_search"
                         android:drawablePadding="10dp"
@@ -51,9 +75,9 @@
                         android:inputType="textPersonName"
                         android:textStyle="italic"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.494"
+                        app:layout_constraintHorizontal_bias="0.32"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/viewFlipper" />
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:id="@+id/category"
@@ -67,21 +91,54 @@
                         app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="@+id/searchBar"
                         app:layout_constraintTop_toBottomOf="@+id/searchBar"
-                        app:layout_constraintVertical_bias="0.096" />
+                        app:layout_constraintVertical_bias="0.066" />
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/listCategoryRecyclerView"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="32dp"
+                        android:layout_width="406dp"
+                        android:layout_height="183dp"
+                        android:layout_marginTop="20dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/category"
-                        app:layout_constraintVertical_bias="0.0" />
+                        app:layout_constraintVertical_bias="0.0">
+
+                    </androidx.recyclerview.widget.RecyclerView>
+
+
+                    <TextView
+                        android:id="@+id/tvRecommend"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Recommend"
+                        android:textSize="20dp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.054"
+                        app:layout_constraintStart_toStartOf="@+id/listCategoryRecyclerView"
+                        app:layout_constraintTop_toBottomOf="@+id/listCategoryRecyclerView"
+                        app:layout_constraintVertical_bias="0.064" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/listRecommendProduct"
+                        android:layout_width="406dp"
+                        android:layout_height="183dp"
+                        android:layout_marginTop="20dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvRecommend"
+                        app:layout_constraintVertical_bias="0.0">
+
+                    </androidx.recyclerview.widget.RecyclerView>
+
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
+
             </LinearLayout>
 
         </ScrollView>

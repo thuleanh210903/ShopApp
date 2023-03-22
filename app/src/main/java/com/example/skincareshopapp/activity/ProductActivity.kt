@@ -15,6 +15,7 @@ import com.example.skincareshopapp.adapter.CategoryProductAdapter
 import com.example.skincareshopapp.adapter.ProductAdapter
 import com.example.skincareshopapp.model.CategoryProductModel
 import com.example.skincareshopapp.model.Product
+import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_product.*
 import org.json.JSONArray
@@ -24,15 +25,20 @@ class ProductActivity : AppCompatActivity() {
 
     private lateinit var adapter: ProductAdapter
     private lateinit var products:ArrayList<Product>
-    val urlData:String="http://192.168.1.11/android/get_product_by_cate.php"
     private lateinit var queue: RequestQueue
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_product)
         //get category id
+        val listRecyclerViewProduct = findViewById<RecyclerView>(R.id.listProductRecyclerView)
         val categoryId = intent.getStringExtra("id_category_product")
+        val urlData:String="http://192.168.43.10/android/get_product_by_cate.php?id_category_product=" + categoryId
         products = ArrayList()
+
+        // thiết lập layout trc khi render
+        listRecyclerViewProduct.layoutManager = LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false)
+
         queue = Volley.newRequestQueue(this)
         val request = StringRequest(
             Request.Method.GET, urlData, { response ->
@@ -55,21 +61,18 @@ class ProductActivity : AppCompatActivity() {
                     describe_product = objectProduct.getString("describe_product")
                     product_image = objectProduct.getString("product_image")
                     id_category_product= objectProduct.getString("id_category_product")
+                    products.add(Product(id_product.toInt(), name_product, number.toInt(),show_product.toBoolean(),price.toDouble(),describe_product,product_image,id_category_product.toInt()))
 
-                    if(id_category_product.toInt()==categoryId?.toInt()){
-                        products.add(Product(id_product.toInt(), name_product, number.toInt(),show_product.toBoolean(),price.toDouble(),describe_product,product_image,id_category_product.toInt()))
-                    }
                 }
+
+                // fetch API xog add vào products r mới gán cho adapter
+                adapter = ProductAdapter(this,products)
+                listRecyclerViewProduct.adapter = adapter
+//                listRecyclerViewProduct.layoutManager = LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false)
+
             }, { error ->
                 println(error.message)
             })
         queue.add(request)
-        listProduct.layoutManager = LinearLayoutManager(this,RecyclerView.HORIZONTAL,false)
-        adapter = ProductAdapter(this@ProductActivity,products)
-        listProduct.adapter = adapter
-        adapter.notifyDataSetChanged()
-
-
-
     }
 }

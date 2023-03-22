@@ -12,7 +12,7 @@ import com.example.skincareshopapp.R
 import com.example.skincareshopapp.activity.ProductActivity
 import com.example.skincareshopapp.model.CategoryProductModel
 
-class CategoryProductAdapter(private val context: Context, private val listCategory: ArrayList<CategoryProductModel>)
+class CategoryProductAdapter(private val context: Context, private val listCategory: List<CategoryProductModel>)
     : RecyclerView.Adapter<CategoryProductAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryProductAdapter.ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.list_category_product, parent, false)
@@ -22,6 +22,8 @@ class CategoryProductAdapter(private val context: Context, private val listCateg
     override fun onBindViewHolder(holder: CategoryProductAdapter.ViewHolder, position: Int) {
         val category = listCategory[position]
         holder.nameCategory.text = category.name_category_product
+
+
         holder.productByCate.setOnClickListener {
             val intent = Intent(context,ProductActivity::class.java)
             intent.putExtra("id_category_product",category.id_category_product.toString())
