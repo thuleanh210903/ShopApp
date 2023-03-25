@@ -33,7 +33,7 @@ class ProductActivity : AppCompatActivity() {
         //get category id
         val listRecyclerViewProduct = findViewById<RecyclerView>(R.id.listProductRecyclerView)
         val categoryId = intent.getStringExtra("id_category_product")
-        val urlData:String="http://192.168.43.10/android/get_product_by_cate.php?id_category_product=" + categoryId
+        val urlData:String="http://192.168.1.11/android/get_product_by_cate.php?id_category_product=" + categoryId
         products = ArrayList()
 
         // thiết lập layout trc khi render
@@ -68,7 +68,7 @@ class ProductActivity : AppCompatActivity() {
                 // fetch API xog add vào products r mới gán cho adapter
                 adapter = ProductAdapter(this,products)
                 listRecyclerViewProduct.adapter = adapter
-//                listRecyclerViewProduct.layoutManager = LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false)
+
 
             }, { error ->
                 println(error.message)

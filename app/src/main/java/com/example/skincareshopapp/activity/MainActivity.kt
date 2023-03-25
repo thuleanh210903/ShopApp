@@ -1,5 +1,6 @@
 package com.example.skincareshopapp.activity
 
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -16,6 +17,7 @@ import com.example.skincareshopapp.model.CategoryProductModel
 import com.example.skincareshopapp.model.Product
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.list_category_product.*
+import kotlinx.android.synthetic.main.list_product.*
 import org.json.JSONArray
 import org.json.JSONObject
 
@@ -24,7 +26,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var adapter: CategoryProductAdapter
     private lateinit var categoryList: MutableList<CategoryProductModel>
-    val urlGetData: String="http://192.168.43.10/android/get_categoty_product.php"
+    val urlGetData: String="http://192.168.1.11/android/get_categoty_product.php"
     private lateinit var queue: RequestQueue
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,12 +42,14 @@ class MainActivity : AppCompatActivity() {
                 var name_category_product:String = ""
                 var id:String?=null
                 var show: String? = null
+                var image: String?= null
                 for(category in 0..jsonArray.length()-1){
                     var objectCategory:JSONObject = jsonArray.getJSONObject(category)
                     id = objectCategory.getString("id_category_product")
                     name_category_product = objectCategory.getString("name_category_product")
                     show = objectCategory.getString("show")
-                    categoryList.add(CategoryProductModel(id.toInt(), name_category_product, show.toBoolean()))
+                    image = objectCategory.getString("image")
+                    categoryList.add(CategoryProductModel(id.toInt(), name_category_product, show.toBoolean(),image))
 
                 }
             }, { error ->

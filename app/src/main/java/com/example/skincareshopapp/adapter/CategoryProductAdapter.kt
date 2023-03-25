@@ -8,9 +8,11 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.skincareshopapp.R
 import com.example.skincareshopapp.activity.ProductActivity
 import com.example.skincareshopapp.model.CategoryProductModel
+import de.hdodenhof.circleimageview.CircleImageView
 
 class CategoryProductAdapter(private val context: Context, private val listCategory: List<CategoryProductModel>)
     : RecyclerView.Adapter<CategoryProductAdapter.ViewHolder>() {
@@ -22,7 +24,7 @@ class CategoryProductAdapter(private val context: Context, private val listCateg
     override fun onBindViewHolder(holder: CategoryProductAdapter.ViewHolder, position: Int) {
         val category = listCategory[position]
         holder.nameCategory.text = category.name_category_product
-
+        Glide.with(context).load("http://192.168.1.11/doancs2/public/public/admin/image/cate/"+category.image).into(holder.image)
 
         holder.productByCate.setOnClickListener {
             val intent = Intent(context,ProductActivity::class.java)
@@ -38,6 +40,7 @@ class CategoryProductAdapter(private val context: Context, private val listCateg
 
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         val nameCategory: TextView = itemView.findViewById(R.id.nameCategory)
+        val image: CircleImageView = itemView.findViewById(R.id.image)
         val productByCate: ConstraintLayout = itemView.findViewById(R.id.productByCate)
 
     }
