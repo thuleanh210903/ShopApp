@@ -3,6 +3,7 @@ package com.example.skincareshopapp.activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.Request
@@ -33,11 +34,12 @@ class ProductActivity : AppCompatActivity() {
         //get category id
         val listRecyclerViewProduct = findViewById<RecyclerView>(R.id.listProductRecyclerView)
         val categoryId = intent.getStringExtra("id_category_product")
-        val urlData:String="http://192.168.1.11/android/get_product_by_cate.php?id_category_product=" + categoryId
+        val urlData:String="http://192.168.1.7/android/get_product_by_cate.php?id_category_product=" + categoryId
         products = ArrayList()
 
         // thiết lập layout trc khi render
-        listRecyclerViewProduct.layoutManager = LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false)
+//        listRecyclerViewProduct.layoutManager = LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false)
+        listRecyclerViewProduct.layoutManager = GridLayoutManager(this,2)
 
         queue = Volley.newRequestQueue(this)
         val request = StringRequest(

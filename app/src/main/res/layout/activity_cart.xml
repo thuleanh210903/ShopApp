@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/cart_background"
+    tools:context=".activity.CartActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="376dp"
+        android:layout_height="317dp"
+        android:background="@drawable/background_constrain"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.542"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/listCartItemRecyclerView"
+        app:layout_constraintVertical_bias="0.893">
+
+        <EditText
+            android:id="@+id/editDiscount"
+            android:layout_width="320dp"
+            android:layout_height="47dp"
+            android:background="@drawable/round_corner"
+            android:hint="Do uou have any discount code?"
+            android:inputType="textPersonName"
+            android:paddingStart="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.087" />
+
+        <TextView
+            android:id="@+id/tvSubtotal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Subtotal"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.09"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editDiscount"
+            app:layout_constraintVertical_bias="0.169" />
+
+        <TextView
+            android:id="@+id/subTotal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.897"
+            app:layout_constraintStart_toEndOf="@+id/tvSubtotal"
+            app:layout_constraintTop_toBottomOf="@+id/editDiscount"
+            app:layout_constraintVertical_bias="0.204" />
+
+        <TextView
+            android:id="@+id/tvTotal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.081"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvSubtotal"
+            app:layout_constraintVertical_bias="0.275" />
+
+        <TextView
+            android:id="@+id/total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.906"
+            app:layout_constraintStart_toEndOf="@+id/tvTotal"
+            app:layout_constraintTop_toBottomOf="@+id/subTotal"
+            app:layout_constraintVertical_bias="0.296" />
+
+        <Button
+            android:id="@+id/btnOrder"
+            android:layout_width="327dp"
+            android:layout_height="42dp"
+            android:background="@drawable/custon_button"
+            android:text="Checkout"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editDiscount"
+            app:layout_constraintVertical_bias="0.864" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/tvCart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.225"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.022" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/listCartItemRecyclerView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.043"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvCart"
+        app:layout_constraintVertical_bias="0.048" />
+
+    <ImageView
+        android:id="@+id/btnBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/listCartItemRecyclerView"
+        app:layout_constraintEnd_toStartOf="@+id/tvCart"
+        app:layout_constraintHorizontal_bias="0.231"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.413"
+        app:srcCompat="@drawable/ic_back" />
+</androidx.constraintlayout.widget.ConstraintLayout>

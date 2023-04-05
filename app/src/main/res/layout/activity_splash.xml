@@ -9,9 +9,12 @@
 
     <Button
         android:id="@+id/button"
-        android:layout_width="268dp"
+        android:layout_width="315dp"
         android:layout_height="64dp"
-        android:background="@drawable/custom_input"
+        android:background="@drawable/custon_button"
+        android:textColor="@color/white"
+        android:textSize = "15dp"
+
         android:text="Shop here"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
