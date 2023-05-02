@@ -16,6 +16,7 @@ import com.example.skincareshopapp.adapter.CategoryProductAdapter
 import com.example.skincareshopapp.adapter.ProductAdapter
 import com.example.skincareshopapp.model.CategoryProductModel
 import com.example.skincareshopapp.model.Product
+import com.example.skincareshopapp.utilities.Constants
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_product.*
@@ -34,7 +35,7 @@ class ProductActivity : AppCompatActivity() {
         //get category id
         val listRecyclerViewProduct = findViewById<RecyclerView>(R.id.listProductRecyclerView)
         val categoryId = intent.getStringExtra("id_category_product")
-        val urlData:String="http://192.168.1.7/android/get_product_by_cate.php?id_category_product=" + categoryId
+        val urlData:String="${Constants.url}get_product_by_cate.php?id_category_product=" + categoryId
         products = ArrayList()
 
         // thiết lập layout trc khi render

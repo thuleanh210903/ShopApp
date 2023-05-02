@@ -14,13 +14,14 @@ import com.android.volley.toolbox.Volley
 import com.example.skincareshopapp.R
 import com.example.skincareshopapp.adapter.ProductAdapter
 import com.example.skincareshopapp.model.Product
+import com.example.skincareshopapp.utilities.Constants
 import kotlinx.android.synthetic.main.activity_register.*
 import org.json.JSONArray
 import org.json.JSONObject
 
 class RegisterActivity : AppCompatActivity() {
     private lateinit var queue: RequestQueue
-    val urlRegisterString: String = "http://192.168.1.7/android/register.php"
+    val urlRegisterString: String = "${Constants.url}register.php"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)

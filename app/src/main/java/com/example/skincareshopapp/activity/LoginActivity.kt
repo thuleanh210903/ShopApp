@@ -12,21 +12,24 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.skincareshopapp.R
 import com.example.skincareshopapp.session.LoginPref
+import com.example.skincareshopapp.utilities.Constants
 import kotlinx.android.synthetic.main.activity_login.*
 import okhttp3.Request
+import org.json.JSONArray
+import org.json.JSONObject
 
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var queue: RequestQueue
-    private var urlLogin:String= "http://192.168.1.7/android/login.php"
+    private var urlLogin:String= "${Constants.url}login.php"
 //    private lateinit var sharedPreferences: SharedPreferences
 //    lateinit var editor:SharedPreferences.Editor
-    private lateinit var session: LoginPref
+    private lateinit var loginSession: LoginPref
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-        session = LoginPref(this)
+        loginSession = LoginPref(this)
 
         tvSignUp.setOnClickListener{
             val intent = Intent(this, RegisterActivity::class.java)
@@ -51,8 +54,8 @@ class LoginActivity : AppCompatActivity() {
         val stringRequest = object : StringRequest(
             com.android.volley.Request.Method.POST, urlLogin,
             Response.Listener<String> { response ->
-                session.createLoginSession(email,password)
-                val intent = Intent(applicationContext,CartActivity::class.java)
+                loginSession.createLoginSession(email,password)
+                val intent = Intent(applicationContext,ProductInfoActivity::class.java)
                 startActivity(intent)
             },
             Response.ErrorListener { error ->

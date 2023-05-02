@@ -8,8 +8,8 @@
     tools:context=".activity.CartActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="376dp"
-        android:layout_height="317dp"
+        android:layout_width="345dp"
+        android:layout_height="287dp"
         android:background="@drawable/background_constrain"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -100,8 +100,8 @@
 
     <TextView
         android:id="@+id/tvCart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="180dp"
+        android:layout_height="26dp"
 
         android:textSize="20dp"
         android:textStyle="bold"
@@ -114,7 +114,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/listCartItemRecyclerView"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         app:layout_constraintBottom_toBottomOf="parent"

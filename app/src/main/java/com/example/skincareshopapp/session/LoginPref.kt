@@ -18,21 +18,16 @@ class LoginPref(context: Context) {
         val IS_LOGIN = "isLogged"
         val USER_EMAIL = "email"
         val USER_PASSWORD = "password"
-        val USER_ID = "userId"
-    }
-    fun setSignIn(userId:Int){
-        editor.putBoolean(IS_LOGIN,true)
-        editor.putInt(USER_ID,userId)
-        editor.apply()
+
     }
 
-    fun getCurrentUser():String?{
-        return sharedPreferences.getString(USER_ID, "")
-    }
+
 
     fun createLoginSession(email:String,password:String){
+
         editor.putString(USER_EMAIL,email)
         editor.putString(USER_PASSWORD,password)
+        editor.putBoolean(IS_LOGIN,true)
         editor.apply()
     }
 
@@ -44,10 +39,15 @@ class LoginPref(context: Context) {
     }
 
     fun logOut(){
+        editor = sharedPreferences.edit()
         editor.clear()
         editor.commit()
     }
     fun isLogged():Boolean{
          return sharedPreferences.getBoolean(IS_LOGIN,false)
+    }
+
+    fun getAll() {
+        println(sharedPreferences.all)
     }
 }

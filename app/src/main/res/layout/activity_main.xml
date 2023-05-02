@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.MainActivity"
+    android:focusableInTouchMode="true"
     tools:openDrawer="start" >
 <!--    <com.google.android.material.navigation.NavigationView-->
 <!--        android:id="@+id/nav_view"-->
@@ -101,28 +102,29 @@
                     android:background="@drawable/round_corner"
                     android:drawableStart="@drawable/ic_search"
                     android:drawablePadding="10dp"
-                    android:ems="10"
+                    android:focusable="false"
+                    android:iconifiedByDefault="false"
                     android:hint="Search your favourite product"
                     android:inputType="textPersonName"
                     android:textStyle="italic"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.393"
+                    app:layout_constraintHorizontal_bias="0.433"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.024" />
+                    app:layout_constraintVertical_bias="0.071" />
 
                 <ImageView
                     android:id="@+id/imageView2"
-                    android:layout_width="26dp"
-                    android:layout_height="23dp"
+                    android:layout_width="22dp"
+                    android:layout_height="19dp"
 
                     app:layout_constraintBottom_toTopOf="@+id/searchBar"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.958"
+                    app:layout_constraintHorizontal_bias="0.916"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.296"
+                    app:layout_constraintVertical_bias="0.428"
                     app:srcCompat="@drawable/ic_cart" />
 
                 <TextView
@@ -135,10 +137,10 @@
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="@+id/searchBar"
+                    app:layout_constraintHorizontal_bias="0.069"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/imageView5"
-                    app:layout_constraintVertical_bias="0.055" />
+                    app:layout_constraintVertical_bias="0.002" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/listCategoryRecyclerView"
@@ -148,7 +150,7 @@
                     android:layout_marginTop="20dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintHorizontal_bias="0.08"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/category"
                     app:layout_constraintVertical_bias="0.0">
@@ -161,24 +163,11 @@
                     android:layout_height="wrap_content"
                     app:layout_constraintBottom_toTopOf="@+id/searchBar"
                     app:layout_constraintEnd_toStartOf="@+id/imageView2"
-                    app:layout_constraintHorizontal_bias="0.075"
+                    app:layout_constraintHorizontal_bias="0.09"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.301"
+                    app:layout_constraintVertical_bias="0.428"
                     app:srcCompat="@drawable/ic_menu" />
-
-                <TextView
-                    android:id="@+id/tvUserName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="TextView"
-                    android:textSize="15dp"
-                    app:layout_constraintBottom_toTopOf="@+id/searchBar"
-                    app:layout_constraintEnd_toStartOf="@+id/imageView2"
-                    app:layout_constraintHorizontal_bias="0.425"
-                    app:layout_constraintStart_toEndOf="@+id/imageView4"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.281" />
 
                 <TextView
                     android:id="@+id/tvRecommend"
@@ -190,7 +179,7 @@
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.222"
+                    app:layout_constraintHorizontal_bias="0.071"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/listCategoryRecyclerView"
                     app:layout_constraintVertical_bias="0.0" />
@@ -203,10 +192,22 @@
                     android:layout_marginTop="20dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintHorizontal_bias="0.08"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tvRecommend"
                     app:layout_constraintVertical_bias="0.0" />
+
+                <ImageView
+                    android:id="@+id/btnAccount"
+                    android:layout_width="22dp"
+                    android:layout_height="19dp"
+                    app:layout_constraintBottom_toTopOf="@+id/searchBar"
+                    app:layout_constraintEnd_toStartOf="@+id/imageView2"
+                    app:layout_constraintHorizontal_bias="0.935"
+                    app:layout_constraintStart_toEndOf="@+id/imageView4"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.396"
+                    app:srcCompat="@drawable/ic_account" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>

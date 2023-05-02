@@ -1,39 +1,46 @@
 package com.example.skincareshopapp.activity
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.skincareshopapp.R
+import com.example.skincareshopapp.activity.userManagement.UserManagementActivity
 import com.example.skincareshopapp.adapter.CategoryProductAdapter
 import com.example.skincareshopapp.model.CategoryProductModel
 import com.example.skincareshopapp.session.LoginPref
+import com.example.skincareshopapp.utilities.Constants
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.list_category_product.*
-import kotlinx.android.synthetic.main.list_product.*
 import org.json.JSONArray
 import org.json.JSONObject
+import java.sql.Time
+import java.util.*
 
 
 class MainActivity : AppCompatActivity() {
-
     private lateinit var adapter: CategoryProductAdapter
     private lateinit var categoryList: MutableList<CategoryProductModel>
-    val urlGetData: String = "http://192.168.1.7/android/get_categoty_product.php"
+    val urlGetData: String = "${Constants.url}get_categoty_product.php"
     private lateinit var queue: RequestQueue
-    private lateinit var itemList: ArrayList<Int>
-    private lateinit var session: LoginPref
+    private lateinit var loginSession: LoginPref
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        session = LoginPref(this)
-        var user: HashMap<String, String> = session.getUserDetail()
-        val email = user.get(LoginPref.USER_EMAIL)
-        tvUserName.setText(email)
+//        loginSession = LoginPref(this)
+//        val user: HashMap<String, String> = loginSession.getUserDetail()
+//        val email = user.get(LoginPref.USER_EMAIL)
+//        btnAccount.setOnClickListener {
+//            val intent = Intent(this, UserManagementActivity::class.java)
+//            intent.putExtra("email", email)
+//            startActivity(intent)
+//            finish()
+//        }
 
 
 
@@ -53,6 +60,7 @@ class MainActivity : AppCompatActivity() {
                     name_category_product = objectCategory.getString("name_category_product")
                     show = objectCategory.getString("show")
                     image = objectCategory.getString("image")
+
                     categoryList.add(
                         CategoryProductModel(
                             id.toInt(),
@@ -61,27 +69,48 @@ class MainActivity : AppCompatActivity() {
                             image
                         )
                     )
+                   
 
                 }
+                listCategoryRecyclerView.layoutManager =
+                    LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+                adapter = CategoryProductAdapter(this, categoryList)
+                listCategoryRecyclerView.setHasFixedSize(true)
+                listCategoryRecyclerView.adapter = adapter
             }, { error ->
                 println(error.message)
             })
         queue.add(request)
 
-        listCategoryRecyclerView.layoutManager =
-            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        adapter = CategoryProductAdapter(this, categoryList)
-        listCategoryRecyclerView.setHasFixedSize(true)
-        listCategoryRecyclerView.adapter = adapter
-
-
-        // view image banner
-
-
-        fun addToList() {
-            itemList.add(R.drawable.pic5)
-
-
-        }
     }
+
+
+
+    private lateinit var timer: Timer
+    private lateinit var timerTask: TimerTask
+    private var currentIndex = 0
+
+    private fun startAutoScroll(){
+        timer = Timer()
+        timerTask = object  : TimerTask(){
+            override fun run(){
+                runOnUiThread {
+                    if(currentIndex < categoryList.size -1){
+                        currentIndex ++
+                    }else{
+                        currentIndex = 0
+                    }
+                    listCategoryRecyclerView.smoothScrollToPosition(currentIndex)
+                }
+            }
+        }
+        timer.schedule(timerTask,3000, 3000)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        timer.cancel()
+        timerTask.cancel()
+    }
+
 }
