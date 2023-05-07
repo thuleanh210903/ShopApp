@@ -21,10 +21,11 @@
         <entry key="..\:/Andoird/SkincareShopApp/app/src/main/res/drawable/ic_shop.xml" value="0.133" />
         <entry key="..\:/Andoird/SkincareShopApp/app/src/main/res/drawable/round_corner.xml" value="0.1385" />
         <entry key="..\:/Andoird/SkincareShopApp/app/src/main/res/drawable/round_corner_info.xml" value="0.1305" />
+        <entry key="..\:/Andoird/SkincareShopApp/app/src/main/res/drawable/round_navigation.xml" value="0.2015" />
         <entry key="..\:/Andoird/SkincareShopApp/app/src/main/res/drawable/selector_wishlist_item.xml" value="0.1" />
         <entry key="..\:/Andoird/SkincareShopApp/app/src/main/res/layout/activity_cart.xml" value="0.25" />
         <entry key="..\:/Andoird/SkincareShopApp/app/src/main/res/layout/activity_login.xml" value="0.25" />
-        <entry key="..\:/Andoird/SkincareShopApp/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Andoird/SkincareShopApp/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Andoird/SkincareShopApp/app/src/main/res/layout/activity_product.xml" value="0.264" />
         <entry key="..\:/Andoird/SkincareShopApp/app/src/main/res/layout/activity_product_info.xml" value="0.25" />
         <entry key="..\:/Andoird/SkincareShopApp/app/src/main/res/layout/activity_register.xml" value="0.20520833333333333" />
@@ -32,13 +33,16 @@
         <entry key="..\:/Andoird/SkincareShopApp/app/src/main/res/layout/activity_splash.xml" value="0.25" />
         <entry key="..\:/Andoird/SkincareShopApp/app/src/main/res/layout/activity_user_management.xml" value="0.25" />
         <entry key="..\:/Andoird/SkincareShopApp/app/src/main/res/layout/cart_item.xml" value="0.24895833333333334" />
-        <entry key="..\:/Andoird/SkincareShopApp/app/src/main/res/layout/header.xml" value="0.2" />
+        <entry key="..\:/Andoird/SkincareShopApp/app/src/main/res/layout/header.xml" value="0.1" />
         <entry key="..\:/Andoird/SkincareShopApp/app/src/main/res/layout/item.xml" value="0.18671875" />
         <entry key="..\:/Andoird/SkincareShopApp/app/src/main/res/layout/list_category_product.xml" value="0.4" />
+        <entry key="..\:/Andoird/SkincareShopApp/app/src/main/res/layout/list_item.xml" value="0.12056737588652482" />
         <entry key="..\:/Andoird/SkincareShopApp/app/src/main/res/layout/list_product.xml" value="0.264" />
         <entry key="..\:/Andoird/SkincareShopApp/app/src/main/res/layout/product_items.xml" value="0.24895833333333334" />
         <entry key="..\:/Andoird/SkincareShopApp/app/src/main/res/layout/selector_wishlist_item.xml" value="0.17255434782608695" />
+        <entry key="..\:/Andoird/SkincareShopApp/app/src/main/res/menu/header.xml" value="0.1" />
         <entry key="..\:/Andoird/SkincareShopApp/app/src/main/res/menu/item_menu.xml" value="0.24895833333333334" />
+        <entry key="..\:/Andoird/SkincareShopApp/app/src/main/res/menu/menu_account.xml" value="0.4" />
         <entry key="..\:/Andoird/SkincareShopApp/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.2085" />
         <entry key="..\:/Andoird/SkincareShopApp/app/src/main/res/mipmap-anydpi-v26/pic1.xml" value="0.1695" />
         <entry key="..\:/Andoird/SkincareShopApp/app/src/main/res/mipmap-anydpi-v26/pic1_round.xml" value="0.1695" />

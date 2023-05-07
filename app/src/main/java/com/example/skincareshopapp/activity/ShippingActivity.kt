@@ -25,8 +25,8 @@ import java.time.format.DateTimeFormatter
 class ShippingActivity : AppCompatActivity() {
     private lateinit var queue: RequestQueue
     private lateinit var session:LoginPref
-    val urlShipping:String = "http://192.168.1.5/android/add_shipping.php"
-    val urlOrder:String = "http://192.168.1.5/android/add_order.php"
+    val urlShipping:String = "http://192.168.1.3/android/add_shipping.php"
+    val urlOrder:String = "http://192.168.1.3/android/add_order.php"
 //    val totalSum = intent.getStringExtra("totalPrice")
 
 
