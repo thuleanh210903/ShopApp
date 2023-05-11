@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.core.content.ContextCompat.startActivity
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.Response
@@ -15,11 +16,13 @@ import com.example.skincareshopapp.R
 import com.example.skincareshopapp.adapter.ProductAdapter
 import com.example.skincareshopapp.model.Product
 import com.example.skincareshopapp.utilities.Constants
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_register.*
 import org.json.JSONArray
 import org.json.JSONObject
 
 class RegisterActivity : AppCompatActivity() {
+    private lateinit var auth: FirebaseAuth
     private lateinit var queue: RequestQueue
     val urlRegisterString: String = "${Constants.url}register.php"
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,17 +36,35 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun register() {
 
-        val userName = userName.text.toString()
+        val username = userName.text.toString()
         val email = emailUser.text.toString()
         val password = userPassword.text.toString()
         val phone = userPhone.text.toString()
+        if (username.isEmpty()) {
+            userName.error = "Username Required"
+        } else if (email.isEmpty()) {
+            emailUser.error = "Email Required"
+        } else if (password.isEmpty()) {
+            userPassword.error = "Password required"
+        }
+        if (username.isNotEmpty() && email.isNotEmpty() && password.isNotEmpty()) {
+            auth = FirebaseAuth.getInstance()
+            auth.createUserWithEmailAndPassword(email, password)
+                .addOnSuccessListener(this) { task ->
+                        val user = auth.currentUser
+                        sendUserToServer(username, email, password, phone)
+                    Toast.makeText(this,"User registered successfully",Toast.LENGTH_SHORT).show()
 
+
+                }
+        }
+    }
+
+    private fun sendUserToServer(username: String, email: String, password: String, phone: String) {
         val queue = Volley.newRequestQueue(this)
-
-// Request a string response from the provided URL.
         val stringRequest = object : StringRequest(Request.Method.POST, urlRegisterString,
             Response.Listener<String> { response ->
-                val intent = Intent(this,LoginActivity::class.java)
+                val intent = Intent(this, LoginActivity::class.java)
                 startActivity(intent)
                 Log.d("This", "Response: $response")
             },
@@ -53,7 +74,7 @@ class RegisterActivity : AppCompatActivity() {
 
             override fun getParams(): MutableMap<String, String> {
                 val params = HashMap<String, String>()
-                params["username"] = userName
+                params["username"] = username
                 params["email"] = email
                 params["password"] = password
                 params["phone"] = phone
@@ -62,5 +83,6 @@ class RegisterActivity : AppCompatActivity() {
         }
 
         queue.add(stringRequest)
-        }
     }
+}
+

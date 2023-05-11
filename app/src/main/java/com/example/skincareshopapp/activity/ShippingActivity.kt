@@ -72,11 +72,8 @@ class ShippingActivity : AppCompatActivity() {
             { response ->
                 try {
                     val jsonObject = JSONObject(response)
-                    val status = jsonObject.getString("status")
-                    val message = jsonObject.getString("message")
-                    if (status == "success") {
-                    } else {
-                    }
+                    val id_order = jsonObject.getInt("id_order")
+
                 } catch (e: JSONException) {
                     e.printStackTrace()
                     println(e)

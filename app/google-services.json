@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "513407671673",
+    "project_id": "skincareshopapp",
+    "storage_bucket": "skincareshopapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:513407671673:android:651f5c397f7ce6051c23a8",
+        "android_client_info": {
+          "package_name": "com.example.skincareshopapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "513407671673-d9aluoqr8lrf603aq8fd3oib3gt83jir.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDkKhyaOU1UtTlaejgGi69ycv-u_U10PvE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "513407671673-d9aluoqr8lrf603aq8fd3oib3gt83jir.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

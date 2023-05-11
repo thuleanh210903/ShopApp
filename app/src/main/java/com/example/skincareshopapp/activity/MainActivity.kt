@@ -4,8 +4,10 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.GravityCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager.widget.ViewPager
 import androidx.viewpager2.widget.ViewPager2
@@ -21,6 +23,7 @@ import com.example.skincareshopapp.model.CategoryProductModel
 import com.example.skincareshopapp.session.LoginPref
 import com.example.skincareshopapp.utilities.Constants
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.navigation.NavigationView
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.activity_main.*
@@ -42,6 +45,23 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        //  navigation view
+        val navigationView : NavigationView = findViewById(R.id.nav_view)
+        setSupportActionBar(toolbarHome)
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        toolbarHome.setNavigationIcon(android.R.drawable.ic_menu_sort_by_size)
+        toolbarHome.setNavigationOnClickListener(View.OnClickListener {
+            drawerLayout.openDrawer(GravityCompat.START)
+        })
+        val isOpen = drawerLayout.isDrawerOpen(GravityCompat.START)
+        if(isOpen) {
+            drawerLayout.closeDrawer(GravityCompat.START)
+        }
+
+
+
+        // navigation bottom
         val navigationBottom : BottomNavigationView = findViewById(R.id.bottom_navigation)
         navigationBottom.setOnNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
@@ -55,11 +75,19 @@ class MainActivity : AppCompatActivity() {
                     startActivity(intent)
                     true
                 }
+                R.id.nav_shop -> {
+                    val intent = Intent(this,ShopActivity::class.java)
+                    startActivity(intent)
+                    true
+                }
                 else -> false
             }
         }
-        val viewPager: ViewPager2 = findViewById(R.id.imageRecycler)
 
+
+
+        // slider
+        val viewPager: ViewPager2 = findViewById(R.id.imageRecycler)
         val images = listOf(
             "https://i.bloganchoi.com/bloganchoi.com/wp-content/uploads/2022/03/tieu-su-tempest-700x420.jpg?fit=700%2C20000&quality=95&ssl=1",
             "https://i.bloganchoi.com/bloganchoi.com/wp-content/uploads/2022/03/tempest-hanbin-profile-696x975.jpeg?fit=700%2C20000&quality=95&ssl=1",
