@@ -4,19 +4,17 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.viewpager.widget.ViewPager
 import androidx.viewpager2.widget.ViewPager2
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.skincareshopapp.R
-import com.example.skincareshopapp.activity.userManagement.UserManagementActivity
 import com.example.skincareshopapp.adapter.CategoryProductAdapter
 import com.example.skincareshopapp.adapter.ViewPagerAdapter
 import com.example.skincareshopapp.model.CategoryProductModel
@@ -24,12 +22,9 @@ import com.example.skincareshopapp.session.LoginPref
 import com.example.skincareshopapp.utilities.Constants
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
-import com.google.android.material.tabs.TabLayout
-import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.activity_main.*
 import org.json.JSONArray
 import org.json.JSONObject
-import java.sql.Time
 import java.util.*
 
 
@@ -44,38 +39,36 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(com.example.skincareshopapp.R.layout.activity_main)
+        loginSession = LoginPref(this)
 
         //  navigation view
-        val navigationView : NavigationView = findViewById(R.id.nav_view)
         setSupportActionBar(toolbarHome)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         toolbarHome.setNavigationIcon(android.R.drawable.ic_menu_sort_by_size)
         toolbarHome.setNavigationOnClickListener(View.OnClickListener {
             drawerLayout.openDrawer(GravityCompat.START)
         })
-        val isOpen = drawerLayout.isDrawerOpen(GravityCompat.START)
-        if(isOpen) {
-            drawerLayout.closeDrawer(GravityCompat.START)
+
+        nav_view.setNavigationItemSelectedListener { item ->
+            Log.d("Navigation Item Clicked", item.title.toString())
+            true
         }
-
-
-
         // navigation bottom
-        val navigationBottom : BottomNavigationView = findViewById(R.id.bottom_navigation)
+        val navigationBottom : BottomNavigationView = findViewById(com.example.skincareshopapp.R.id.bottom_navigation)
         navigationBottom.setOnNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
-                R.id.nav_home -> {
+                com.example.skincareshopapp.R.id.nav_home -> {
                     val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
                     true
                 }
-                R.id.nav_cart -> {
+                com.example.skincareshopapp.R.id.nav_cart -> {
                     val intent = Intent(this, CartActivity::class.java)
                     startActivity(intent)
                     true
                 }
-                R.id.nav_shop -> {
+                com.example.skincareshopapp.R.id.nav_shop -> {
                     val intent = Intent(this,ShopActivity::class.java)
                     startActivity(intent)
                     true
@@ -84,10 +77,8 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-
-
         // slider
-        val viewPager: ViewPager2 = findViewById(R.id.imageRecycler)
+        val viewPager: ViewPager2 = findViewById(com.example.skincareshopapp.R.id.imageRecycler)
         val images = listOf(
             "https://i.bloganchoi.com/bloganchoi.com/wp-content/uploads/2022/03/tieu-su-tempest-700x420.jpg?fit=700%2C20000&quality=95&ssl=1",
             "https://i.bloganchoi.com/bloganchoi.com/wp-content/uploads/2022/03/tempest-hanbin-profile-696x975.jpeg?fit=700%2C20000&quality=95&ssl=1",
@@ -111,19 +102,6 @@ class MainActivity : AppCompatActivity() {
                 handler.post(runnable)
             }
         }, 3000, 3000)
-
-//        loginSession = LoginPref(this)
-//        val user: HashMap<String, String> = loginSession.getUserDetail()
-//        val email = user.get(LoginPref.USER_EMAIL)
-//        btnAccount.setOnClickListener {
-//            val intent = Intent(this, UserManagementActivity::class.java)
-//            intent.putExtra("email", email)
-//            startActivity(intent)
-//            finish()
-//        }
-
-
-
 
         categoryList = mutableListOf()
         queue = Volley.newRequestQueue(this)
@@ -192,5 +170,6 @@ class MainActivity : AppCompatActivity() {
         timer.cancel()
         timerTask.cancel()
     }
+
 
 }

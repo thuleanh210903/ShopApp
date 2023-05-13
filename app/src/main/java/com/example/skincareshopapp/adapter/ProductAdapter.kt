@@ -30,7 +30,7 @@ class ProductAdapter(private  val context: Context, private val products: List<P
         val product = products[position]
         holder.nameProduct.text = product.name_product
         holder.priceProduct.text = product.price.toString()
-        Glide.with(context).load("http://192.168.1.5/doancs2/public/public/admin/image/product/"+product.product_image).into(holder.imageProduct)
+        Glide.with(context).load("http://192.168.1.4/doancs2/public/public/admin/image/product/"+product.product_image).into(holder.imageProduct)
 
         holder.productInfo.setOnClickListener {
 

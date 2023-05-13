@@ -46,7 +46,7 @@ class CartAdapter(private val context: Context,private val cartItems: List<Produ
         val cartItem = cartItems[position]
         holder.nameProductCart.text = cartItem.nameProductCart
         holder.priceProductCart.text = cartItem.priceProductCart.toString()
-        Glide.with(context).load("http://192.168.1.3/doancs2/public/public/admin/image/product/"+cartItem.imageProductCart).into(holder.imageProductCart)
+        Glide.with(context).load("http://192.168.1.4/doancs2/public/public/admin/image/product/"+cartItem.imageProductCart).into(holder.imageProductCart)
         holder.quantity.text = cartItem.quantity.toString()
         var newQuantity = cartItem.quantity
 //        holder.tvSubTotal.text = sum

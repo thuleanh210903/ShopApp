@@ -69,7 +69,7 @@ class ProductInfoActivity : AppCompatActivity() {
                     priceProduct.text = price.toString()
                     describeProduct.text = describe_product.toString()
                     Glide.with(this)
-                        .load("http://192.168.1.6/doancs2/public/public/admin/image/product/" + product_image)
+                        .load("http://192.168.1.4/doancs2/public/public/admin/image/product/" + product_image)
                         .into(imagePath)
                     println(product)
                 }

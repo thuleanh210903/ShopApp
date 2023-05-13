@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:checkableBehavior="single" >
         <item android:id="@+id/nav_profile"
-            android:title="Home"
+            android:title="Account"
             android:icon = "@drawable/ic_account"
             />
         <item android:id="@+id/nav_order"
@@ -13,9 +13,5 @@
             android:title="Log out"
             android:icon="@drawable/ic_logout"
             />
-
     </group>
-
-
-
 </menu>
