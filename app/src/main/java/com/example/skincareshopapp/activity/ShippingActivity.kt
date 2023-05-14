@@ -74,6 +74,7 @@ class ShippingActivity : AppCompatActivity() {
                     val intent = Intent(this, OrderActivity::class.java)
                     intent.putExtra("id_order",id_order.toString())
                     intent.putExtra("id_shipping",id_shipping.toString())
+                    intent.putExtra("order_total",order_total.toString())
                     startActivity(intent)
 
                 } catch (e: JSONException) {

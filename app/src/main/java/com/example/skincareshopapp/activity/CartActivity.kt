@@ -77,10 +77,7 @@ class CartActivity : AppCompatActivity() {
     }
 
     private fun totalPrice(id_product: String, quantity: Int) {
-        btnDiscount.setOnClickListener {
-            val discountCode = editDiscount.text.toString()
-            discountApply(discountCode)
-        }
+
         var priceByQuantity:Double = 0.0
         val priceQueue:RequestQueue
         val urlPrice: String = "${Constants.url}get_price_product.php?id_product="+ id_product
@@ -116,27 +113,6 @@ class CartActivity : AppCompatActivity() {
         priceQueue.add(request)
     }
 
-    private fun discountApply(discountCode: String): Int {
-        val discountQueue: RequestQueue
-        var coupon:Int = 0
-        val urlDiscount: String = "${Constants.url}check_coupon.php?coupon_code=" + discountCode
-        discountQueue = Volley.newRequestQueue(this)
-        val request = StringRequest(
-            Request.Method.GET, urlDiscount, { response ->
-                val jsonArray: JSONArray = JSONArray(response)
-                var coupon_number: String=""
-                for (discount in 0..jsonArray.length() - 1) {
-                    var objectDiscount: JSONObject = jsonArray.getJSONObject(discount)
-                    coupon_number = objectDiscount.getString("coupon_number")
-                    coupon = coupon_number.toInt()
-                }
-            },
-            { error ->
-                println(error.message)
-            })
-        discountQueue.add(request)
-        return coupon
-    }
 
 
 

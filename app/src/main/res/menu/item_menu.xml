@@ -13,7 +13,9 @@
             android:title="Cart"
             android:icon="@drawable/ic_cart"
             />
-
+        <item android:id="@+id/nav_profile"
+            android:title="Account"
+            android:icon="@drawable/ic_account"/>
     </group>
 
 

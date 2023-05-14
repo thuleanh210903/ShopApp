@@ -85,8 +85,8 @@ class ProductInfoActivity : AppCompatActivity() {
         // checked login before add to cart
         btnCart.setOnClickListener {
             val isLogged = session.isLogged()
-            var user : HashMap<String,String> = session.getUserDetail()
-            var email = user.get(LoginPref.USER_EMAIL)
+//            var user : HashMap<String,String> = session.getUserDetail()
+//            var email = user.get(LoginPref.USER_EMAIL)
 
             if(isLogged==false){
                 val intent = Intent(this,LoginActivity::class.java)

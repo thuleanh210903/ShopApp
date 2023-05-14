@@ -51,15 +51,26 @@ class RegisterActivity : AppCompatActivity() {
             auth = FirebaseAuth.getInstance()
             auth.createUserWithEmailAndPassword(email, password)
                 .addOnSuccessListener(this) { task ->
-                        val user = auth.currentUser
+                    val user = auth.currentUser
+                    user?.sendEmailVerification()
+                        ?.addOnCompleteListener { verificationTask ->
+                            if (verificationTask.isSuccessful) {
+                                Toast.makeText(this,"User registered successfully",Toast.LENGTH_SHORT).show()
+                            } else {
+                                // Verification email sending failed
+                            }
+                        }
+
                         sendUserToServer(username, email, password, phone)
-                    Toast.makeText(this,"User registered successfully",Toast.LENGTH_SHORT).show()
+
 
 
                 }
+                .addOnFailureListener(this) { exception ->
+                    Toast.makeText(this,"Registration failed: ${exception.message}",Toast.LENGTH_SHORT).show()
+                }
         }
     }
-
     private fun sendUserToServer(username: String, email: String, password: String, phone: String) {
         val queue = Volley.newRequestQueue(this)
         val stringRequest = object : StringRequest(Request.Method.POST, urlRegisterString,

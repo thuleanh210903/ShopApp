@@ -1,28 +1,35 @@
 package com.example.skincareshopapp.activity
 
+import android.R
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
 import android.view.View
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
-import com.example.skincareshopapp.R
+import com.example.skincareshopapp.activity.userManagement.UserManagementActivity
 import com.example.skincareshopapp.adapter.CategoryProductAdapter
+import com.example.skincareshopapp.adapter.ProductAdapter
+import com.example.skincareshopapp.adapter.RecommendProductAdapter
 import com.example.skincareshopapp.adapter.ViewPagerAdapter
 import com.example.skincareshopapp.model.CategoryProductModel
+import com.example.skincareshopapp.model.Product
 import com.example.skincareshopapp.session.LoginPref
 import com.example.skincareshopapp.utilities.Constants
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.nav_drawer.*
 import org.json.JSONArray
 import org.json.JSONObject
 import java.util.*
@@ -30,18 +37,20 @@ import java.util.*
 
 class MainActivity : AppCompatActivity() {
     private lateinit var adapter: CategoryProductAdapter
+    private lateinit var recommendAdapter: RecommendProductAdapter
     private lateinit var viewPager: ViewPager2
     private lateinit var categoryList: MutableList<CategoryProductModel>
     val urlGetData: String = "${Constants.url}get_categoty_product.php"
     private lateinit var queue: RequestQueue
     private lateinit var loginSession: LoginPref
+    private lateinit var productRecommend:MutableList<Product>
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(com.example.skincareshopapp.R.layout.activity_main)
         loginSession = LoginPref(this)
-
+        recommendProduct()
         //  navigation view
         setSupportActionBar(toolbarHome)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
@@ -50,10 +59,9 @@ class MainActivity : AppCompatActivity() {
             drawerLayout.openDrawer(GravityCompat.START)
         })
 
-        nav_view.setNavigationItemSelectedListener { item ->
-            Log.d("Navigation Item Clicked", item.title.toString())
-            true
-        }
+
+
+
         // navigation bottom
         val navigationBottom : BottomNavigationView = findViewById(com.example.skincareshopapp.R.id.bottom_navigation)
         navigationBottom.setOnNavigationItemSelectedListener { menuItem ->
@@ -70,6 +78,11 @@ class MainActivity : AppCompatActivity() {
                 }
                 com.example.skincareshopapp.R.id.nav_shop -> {
                     val intent = Intent(this,ShopActivity::class.java)
+                    startActivity(intent)
+                    true
+                }
+                com.example.skincareshopapp.R.id.nav_profile->{
+                    val intent = Intent(this,UserManagementActivity::class.java)
                     startActivity(intent)
                     true
                 }
@@ -127,7 +140,7 @@ class MainActivity : AppCompatActivity() {
                             image
                         )
                     )
-                   
+
 
                 }
                 listCategoryRecyclerView.layoutManager =
@@ -142,6 +155,46 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    private fun recommendProduct() {
+        listRecommend.layoutManager = GridLayoutManager(this,2)
+       productRecommend = mutableListOf()
+        val urlRecommend:String="${Constants.url}recommend.php"
+        val queueRecommend:RequestQueue = Volley.newRequestQueue(this)
+        val request = StringRequest(
+            Request.Method.GET, urlRecommend, { response ->
+                var jsonArray: JSONArray = JSONArray(response)
+                var name_product:String = ""
+                var id_product:String
+                var number:String
+                var price:String
+                var describe_product:String
+                var show_product:String
+                var id_category_product:String
+                var product_image:String
+                for(product in 0..jsonArray.length()-1){
+                    var objectProduct:JSONObject = jsonArray.getJSONObject(product)
+                    id_product = objectProduct.getString("id_product")
+                    name_product = objectProduct.getString("name_product")
+                    show_product = objectProduct.getString("show_product")
+                    number = objectProduct.getString("number")
+                    price = objectProduct.getString("price")
+                    describe_product = objectProduct.getString("describe_product")
+                    product_image = objectProduct.getString("product_image")
+                    id_category_product= objectProduct.getString("id_category_product")
+                    productRecommend.add(Product(id_product.toInt(), name_product, number.toInt(),show_product.toBoolean(),price.toDouble(),describe_product,product_image,id_category_product.toInt()))
+
+                }
+
+                // fetch API xog add vào products r mới gán cho adapter
+                recommendAdapter= RecommendProductAdapter(this,productRecommend)
+                listRecommend.adapter = recommendAdapter
+
+
+            }, { error ->
+                println(error.message)
+            })
+        queueRecommend.add(request)
+    }
 
 
     private lateinit var timer: Timer
