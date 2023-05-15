@@ -8,212 +8,179 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
-        android:layout_width="match_parent"
-        android:layout_height="247dp"
-        android:background="@drawable/navheader"
-
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="412dp"
+        android:layout_height="77dp"
+        android:background="@drawable/header_background"
+        android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.001">
+        app:layout_constraintTop_toTopOf="parent">
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/imageUser"
-            android:layout_width="74dp"
-            android:layout_height="62dp"
-            android:src="@drawable/user_image"
-            app:civ_border_color="#FF000000"
-
+        <TextView
+            android:id="@+id/tvHello"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hello"
+            android:textColor="@color/white"
+            android:textSize="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintHorizontal_bias="0.042"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.497" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tvUserName"
-            android:layout_width="125dp"
-            android:layout_height="25dp"
-            android:layout_marginBottom="28dp"
-            android:text="TextView"
-            android:textAlignment="center"
-            android:textSize="15dp"
-            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:textColor="@color/white"
+            android:textSize="25dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageUser"
-            app:layout_constraintVertical_bias="1.0" />
+
+            app:layout_constraintHorizontal_bias="0.056"
+            app:layout_constraintStart_toEndOf="@+id/tvHello"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.642" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <LinearLayout
-        android:layout_width="409dp"
-        android:layout_height="482dp"
-        android:orientation="vertical"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+        app:layout_constraintVertical_bias="0.208">
 
-        <TextView
-            android:id="@+id/logOut"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:id="@+id/layoutLogout"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:drawableStart="@drawable/ic_logout"
-            android:drawablePadding="20dp"
-            android:paddingLeft="20dp"
-            android:paddingTop="30dp"
-            android:text="Log out"
-            android:textSize="20dp"
-            android:textStyle="bold" />
+            android:layout_marginTop="22dp"
+            android:background="@drawable/white_rectangle_background"
+            android:orientation="vertical"
+            android:padding="15dp"
+            app:layout_constraintDimensionRatio="H,1:1"
+            app:layout_constraintEnd_toStartOf="@+id/layoutOrder"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
 
-        <TextView
-            android:id="@+id/orders"
-            android:layout_width="match_parent"
+            >
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_margin="8dp"
+                android:padding="0dp"
+                android:src="@drawable/log_out"
+
+
+                />
+
+            <TextView
+                android:id="@+id/logOut"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Log out"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layoutOrder"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:drawableStart="@drawable/ic_payment"
-            android:drawablePadding="20dp"
-            android:paddingLeft="20dp"
-            android:paddingTop="30dp"
-            android:text="Orders"
-            android:textSize="20dp"
-            android:textStyle="bold"/>
+            android:layout_marginTop="20dp"
+            android:background="@drawable/white_rectangle_background"
+            android:orientation="vertical"
+            android:padding="15dp"
+            app:layout_constraintDimensionRatio="H,1:1"
 
-        <TextView
-            android:id="@+id/profile"
-            android:layout_width="match_parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.753"
+
+            app:layout_constraintStart_toEndOf="@+id/layoutLogout"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_margin="10dp"
+                android:padding="0dp"
+                android:src="@drawable/order"
+
+
+                />
+
+            <TextView
+                android:id="@+id/orders"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Orders"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layoutAccount"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:drawableStart="@drawable/ic_account"
-            android:drawablePadding="20dp"
-            android:paddingLeft="20dp"
-            android:paddingTop="30dp"
-            android:text="Profile"
-            android:textSize="20dp"
-            android:textStyle="bold" />
-    </LinearLayout>
+            android:layout_marginTop="22dp"
+            android:background="@drawable/white_rectangle_background"
+            android:orientation="vertical"
+            android:padding="15dp"
+            app:layout_constraintDimensionRatio="H,1:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
 
-    <!--    <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--        android:id="@+id/constraintLayout3"-->
-<!--        android:layout_width="413dp"-->
-<!--        android:layout_height="486dp"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="1.0"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"-->
-<!--        app:layout_constraintVertical_bias="1.0">-->
+            app:layout_constraintTop_toBottomOf="@+id/layoutLogout">
 
-<!--        <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--            android:layout_width="346dp"-->
-<!--            android:layout_height="351dp"-->
-<!--            android:background="@drawable/round_corner"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintHorizontal_bias="0.492"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent"-->
-<!--            app:layout_constraintVertical_bias="0.503">-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/email"-->
-<!--                android:layout_width="106dp"-->
-<!--                android:layout_height="25dp"-->
-<!--                android:text="Email"-->
-<!--                android:textSize="20dp"-->
-<!--                android:textStyle="bold"-->
-<!--                app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintHorizontal_bias="0.083"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toTopOf="parent"-->
-<!--                app:layout_constraintVertical_bias="0.128" />-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/tvEmail"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="TextView"-->
-
-<!--                app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintHorizontal_bias="0.456"-->
-<!--                app:layout_constraintStart_toEndOf="@+id/email"-->
-<!--                app:layout_constraintTop_toTopOf="parent"-->
-<!--                app:layout_constraintVertical_bias="0.123" />-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/textView6"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="28dp"-->
-<!--                android:text="Numberphone"-->
-<!--                android:textSize="20dp"-->
-<!--                android:textStyle="bold"-->
-<!--                app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintHorizontal_bias="0.106"-->
-
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/email"-->
-<!--                app:layout_constraintVertical_bias="0.194" />-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/tvPhone"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="TextView"-->
-<!--                app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintHorizontal_bias="0.676"-->
-<!--                app:layout_constraintStart_toStartOf="@+id/textView6"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/tvEmail"-->
-<!--                app:layout_constraintVertical_bias="0.241" />-->
-
-<!--            <Button-->
-<!--                android:id="@+id/btnLogOut"-->
-<!--                android:layout_width="287dp"-->
-<!--                android:layout_height="46dp"-->
-<!--                android:background="@drawable/custon_button"-->
-<!--                android:text="Edit"-->
-<!--                app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintHorizontal_bias="0.498"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toTopOf="parent"-->
-<!--                app:layout_constraintVertical_bias="0.951" />-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/textView3"-->
-<!--                android:layout_width="100dp"-->
-<!--                android:layout_height="23dp"-->
-<!--                android:layout_marginTop="35dp"-->
-<!--                android:text="Address"-->
-<!--                android:textSize="20dp"-->
-<!--                android:textStyle="bold"-->
-<!--                app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintHorizontal_bias="0.093"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/textView6"-->
-<!--                app:layout_constraintVertical_bias="0.0" />-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/tvAddress"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="TextView"-->
-<!--                app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintHorizontal_bias="0.478"-->
-<!--                app:layout_constraintStart_toEndOf="@+id/textView3"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/tvPhone"-->
-<!--                app:layout_constraintVertical_bias="0.207" />-->
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_margin="8dp"
+                android:layout_marginLeft="20dp"
+                android:padding="8dp"
+                android:src="@drawable/account"
 
 
-<!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
-<!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
+                />
+
+            <TextView
+                android:id="@+id/profile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Profile"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="361dp"
+            android:layout_height="43dp"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/trending_background"
+            android:padding="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.68"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layoutAccount"
+            app:layout_constraintVertical_bias="1.0">
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

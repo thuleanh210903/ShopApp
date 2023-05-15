@@ -51,50 +51,19 @@ class MainActivity : AppCompatActivity() {
         setContentView(com.example.skincareshopapp.R.layout.activity_main)
         loginSession = LoginPref(this)
         recommendProduct()
-        //  navigation view
-        setSupportActionBar(toolbarHome)
-        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-        toolbarHome.setNavigationIcon(android.R.drawable.ic_menu_sort_by_size)
-        toolbarHome.setNavigationOnClickListener(View.OnClickListener {
-            drawerLayout.openDrawer(GravityCompat.START)
-        })
 
 
+        navigationBottom()
 
+        displayCategory()
 
-        // navigation bottom
-        val navigationBottom : BottomNavigationView = findViewById(com.example.skincareshopapp.R.id.bottom_navigation)
-        navigationBottom.setOnNavigationItemSelectedListener { menuItem ->
-            when (menuItem.itemId) {
-                com.example.skincareshopapp.R.id.nav_home -> {
-                    val intent = Intent(this, MainActivity::class.java)
-                    startActivity(intent)
-                    true
-                }
-                com.example.skincareshopapp.R.id.nav_cart -> {
-                    val intent = Intent(this, CartActivity::class.java)
-                    startActivity(intent)
-                    true
-                }
-                com.example.skincareshopapp.R.id.nav_shop -> {
-                    val intent = Intent(this,ShopActivity::class.java)
-                    startActivity(intent)
-                    true
-                }
-                com.example.skincareshopapp.R.id.nav_profile->{
-                    val intent = Intent(this,UserManagementActivity::class.java)
-                    startActivity(intent)
-                    true
-                }
-                else -> false
-            }
-        }
 
         // slider
         val viewPager: ViewPager2 = findViewById(com.example.skincareshopapp.R.id.imageRecycler)
         val images = listOf(
-            "https://i.bloganchoi.com/bloganchoi.com/wp-content/uploads/2022/03/tieu-su-tempest-700x420.jpg?fit=700%2C20000&quality=95&ssl=1",
-            "https://i.bloganchoi.com/bloganchoi.com/wp-content/uploads/2022/03/tempest-hanbin-profile-696x975.jpeg?fit=700%2C20000&quality=95&ssl=1",
+            "https://i.pinimg.com/564x/42/ce/09/42ce09f0b1b40cf72912bfdcf8bc1dd1.jpg",
+            "https://i.pinimg.com/564x/26/c2/81/26c281f57cd5512f9fa99c9388d2bb94.jpg",
+            "https://i.pinimg.com/564x/7a/d4/27/7ad42704853ac6d77de1695224404749.jpg"
         )
 
         val imageAdapter = ViewPagerAdapter(images)
@@ -115,6 +84,11 @@ class MainActivity : AppCompatActivity() {
                 handler.post(runnable)
             }
         }, 3000, 3000)
+
+
+    }
+
+    private fun displayCategory() {
 
         categoryList = mutableListOf()
         queue = Volley.newRequestQueue(this)
@@ -152,6 +126,35 @@ class MainActivity : AppCompatActivity() {
                 println(error.message)
             })
         queue.add(request)
+    }
+
+    private fun navigationBottom() {
+        val navigationBottom : BottomNavigationView = findViewById(com.example.skincareshopapp.R.id.bottom_navigation)
+        navigationBottom.setOnNavigationItemSelectedListener { menuItem ->
+            when (menuItem.itemId) {
+                com.example.skincareshopapp.R.id.nav_home -> {
+                    val intent = Intent(this, MainActivity::class.java)
+                    startActivity(intent)
+                    true
+                }
+                com.example.skincareshopapp.R.id.nav_cart -> {
+                    val intent = Intent(this, CartActivity::class.java)
+                    startActivity(intent)
+                    true
+                }
+                com.example.skincareshopapp.R.id.nav_shop -> {
+                    val intent = Intent(this,ShopActivity::class.java)
+                    startActivity(intent)
+                    true
+                }
+                com.example.skincareshopapp.R.id.nav_profile->{
+                    val intent = Intent(this,UserManagementActivity::class.java)
+                    startActivity(intent)
+                    true
+                }
+                else -> false
+            }
+        }
 
     }
 

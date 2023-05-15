@@ -42,7 +42,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:text="TextView"
-                android:textSize="15dp"
+                android:textSize="17dp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -70,27 +70,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:text="TextView"
-                android:textColor="#EBBE97FF"
+                android:textColor="@color/teal_200"
                 android:textSize="15dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.725"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/nameProduct" />
-
-            <CheckBox
-                android:id="@+id/btnWishList"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="30dp"
-                android:button="@drawable/selector_wishlist_item"
-
-
-                app:layout_column="0"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/nameProduct"
-                app:layout_constraintTop_toBottomOf="@+id/imageProduct"
-                app:layout_row="0" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

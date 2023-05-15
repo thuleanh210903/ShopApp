@@ -3,4 +3,7 @@
     <string name="home">Home</string>
     <string name="shop">Shop</string>
     <string name="profile">Profile</string>
+    <string name="desc_one">Skincare for tomorrow, delivered today </string>
+    <string name="desc_two">Your order, your way. Online every day</string>
+    <string name="desc_three">Healthy skin, beautiful you</string>
 </resources>

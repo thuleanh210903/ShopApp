@@ -4,12 +4,16 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.annotation.RequiresApi
+import androidx.core.content.res.ResourcesCompat
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.skincareshopapp.R
+import com.example.skincareshopapp.adapter.ItemMargin
 import com.example.skincareshopapp.adapter.OrderAdapter
 import com.example.skincareshopapp.model.Orders
 import com.example.skincareshopapp.session.LoginPref
@@ -67,6 +71,13 @@ class OrderUserActivity : AppCompatActivity() {
                     LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
                 adapter = OrderAdapter(this,orders)
                 listOrderByUser.adapter = adapter
+                val itemMargin = ItemMargin()
+                var dividerItem = DividerItemDecoration(this,RecyclerView.VERTICAL)
+                ResourcesCompat.getDrawable(resources,R.drawable.divider,null)?.let {
+                    dividerItem.setDrawable(it)
+                }
+                listOrderByUser.addItemDecoration(dividerItem)
+                listOrderByUser.addItemDecoration(itemMargin)
             },{
                     error ->
                 println(error.message)
